@@ -21,7 +21,7 @@ db.sequelize.sync();
 
 // simple route
 app.get('/', (req, res) => {
-	res.json({ message: 'Welcome to Zoomix application.' });
+	res.json({ message: 'Welcome to Zoomix application. V1' });
 });
 
 // set port, listen for requests
