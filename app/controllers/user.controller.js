@@ -21,7 +21,7 @@ exports.create = (req, res) => {
 		password: req.body.password,
 		coins: req.body.coins
 	};
-
+ 
 	User.create(user)
 		.then((data) => {
 			res.send(data);
@@ -34,7 +34,21 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Users from the database.
-exports.findAll = (req, res) => {};
+exports.findAll = (req, res) => {
+    //const name = req.query.name;
+    //var condition = name ? { title: { [Op.like]: `%${name}%` } } : null;
+
+    User.findAll(/*{ where: condition }*/)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Ocurrio un error al traer los Users."
+      });
+    });
+};
 
 // Find a single User with an id
 exports.findOne = (req, res) => {};
