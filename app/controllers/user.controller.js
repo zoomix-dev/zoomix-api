@@ -51,7 +51,19 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single User with an id
-exports.findOne = (req, res) => {};
+exports.findOne = (req, res) => {
+    const id = req.params.id;
+
+    User.findByPk(id)
+    .then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Error al traer el User con id=" + id
+        });
+    });
+};
 
 // Update a User by the id in the request
 exports.update = (req, res) => {};

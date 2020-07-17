@@ -12,8 +12,8 @@ module.exports = (app) => {
 	// // Retrieve all published users
 	// router.get('/published', users.findAllPublished);
 
-	// // Retrieve a single Tutorial with id
-	// router.get('/:id', users.findOne);
+	// Retrieve a single User with id
+	router.get('/:id', users.findOne);
 
 	// // Update a Tutorial with id
 	// router.put('/:id', users.update);
