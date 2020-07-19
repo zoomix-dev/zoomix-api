@@ -1,3 +1,5 @@
+const questionModel = require('./question.model');
+
 module.exports = (sequelize, Sequelize) => {
 	const User = sequelize.define('user', {
 		id: {
@@ -30,5 +32,10 @@ module.exports = (sequelize, Sequelize) => {
 			allowNull: false
 		}
 	});
+
+	User.associate = (models) => {
+		User.hasMany(models.questions);
+	};
+
 	return User;
 };

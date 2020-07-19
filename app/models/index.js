@@ -20,6 +20,9 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.users = require('./user.model.js')(sequelize, Sequelize);
+db.questions = require('./question.model.js')(sequelize, Sequelize);
+db.categories = require('./category.model.js')(sequelize, Sequelize);
+db.configurations = require('./configuration.model.js')(sequelize, Sequelize);
 
 // db.sequelize.sync({ force: true }).then(() => {
 // 	console.log('Drop and re-sync db.');

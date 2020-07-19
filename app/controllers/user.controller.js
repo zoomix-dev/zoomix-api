@@ -69,7 +69,29 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {};
 
 // Delete a User with the specified id in the request
-exports.delete = (req, res) => {};
+exports.delete = (req, res) => {
+    const id = req.params.id;
+
+    User.destroy({
+        where: { id: id }
+    })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "User eliminado corectamente!"
+        });
+      } else {
+        res.send({
+          message: `no fue posible borrar el User con id=${id}. Probablemente no exista!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "No se pudo borrar el user con id=" + id
+      });
+    });
+};
 
 // Delete all Users from the database.
 exports.deleteAll = (req, res) => {};
